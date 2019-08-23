@@ -10,6 +10,7 @@ default: &default
   timeout: 5000
   host: localhost
   username: postgres
+  port: 5678
 
 development:
   <<: *default
