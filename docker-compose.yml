@@ -7,3 +7,10 @@ services:
       - ./pgdata:/var/lib/postgresql/data
     ports:
       - "5678:5432"
+  web:
+    image: doerfli/rss-mock-server:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    
