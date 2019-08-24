@@ -1,0 +1,11 @@
+env:
+  global:
+    - RELEASE=`echo $TRAVIS_BRANCH | sed -E "s/\//-/g" | sed -e 's/\(.*\)/\L\1/'`
+services:
+  - docker
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+script:
+  - docker build -t doerfli/rss-mock-server:$RELEASE .
+  - docker push doerfli/rss-mock-server:$RELEASE
+  
