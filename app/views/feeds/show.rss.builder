@@ -5,7 +5,7 @@ xml.rss :version => "2.0" do
     xml.description @feed.subtitle
     xml.link feed_url(@feed.iid)
 
-    @feed.items.order("published DESC").limit(30).each do |item|
+    @feed.items.order("published DESC").limit(@num_items).each do |item|
       xml.item do
         xml.title item.title
         xml.description item.summary

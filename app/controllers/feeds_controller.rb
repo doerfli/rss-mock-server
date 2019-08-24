@@ -1,7 +1,6 @@
 class FeedsController < ApplicationController
   include ActionController::MimeResponds
   include ActionView::Layouts
-  # include ActionController::ImplicitRender
 
   def index
     logger.info "index"
@@ -14,10 +13,11 @@ class FeedsController < ApplicationController
 
     i = 0
     lastitem = Item.where(feed: @feed).size.positive? ? Item.where(feed: @feed).order("published DESC").first : nil
-    interval_s = (params[:interval].to_i || 60).seconds
+    interval_s = (params[:interval] || 60).to_i.seconds
+    @num_items = (params[:items] || 30).to_i
     ts = Time.now
 
-    while i < 30 && nil_or_after(lastitem, ts - interval_s)
+    while i < @num_items && nil_or_after(lastitem, ts - interval_s)
       create_item(@feed, ts)
       ts -= interval_s
       i += 1

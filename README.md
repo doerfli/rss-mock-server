@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Run `rails server` to start the application. There is also a docker image available, use the `docker-compose.yml` for easy setup. 
 
-Things you may want to cover:
+Once the server is up and running go to `localhost:3000/feeds/randomfeed.rss` to create a new feed (you may replace `randomfeed` with any id you like). New items will be added every 60 seconds by default. 
 
-* Ruby version
+If you want a different interval, add the query parameter `interval` to the url. E.g. `<host>:<port>/feeds/<somefeedid>.rss?interval=10` 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you want a different number of items, add the query parameter `items` to the url. E.g. `<host>:<port>/feeds/<somefeedid>.rss?items=30` 
