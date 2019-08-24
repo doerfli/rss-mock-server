@@ -14,15 +14,13 @@ class FeedsController < ApplicationController
 
     i = 0
     lastitem = Item.where(feed: @feed).size.positive? ? Item.where(feed: @feed).order("published DESC").first : nil
-    one_minute_ago = Time.now - 1.minute
+    interval_s = (params[:interval].to_i || 60).seconds
+    ts = Time.now
 
-    if nil_or_after(lastitem, one_minute_ago)
-      ts = Time.now
-      while i < 30 && nil_or_after(lastitem, ts)
-        create_item(@feed, ts)
-        ts -= 1.minute
-        i += 1
-      end
+    while i < 30 && nil_or_after(lastitem, ts - interval_s)
+      create_item(@feed, ts)
+      ts -= interval_s
+      i += 1
     end
 
     logger.info @feed.inspect
