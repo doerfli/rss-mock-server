@@ -9,3 +9,4 @@ script:
   - docker build -t doerfli/rss-mock-server:$RELEASE .
   - docker push doerfli/rss-mock-server:$RELEASE
   
+  
