@@ -8,7 +8,7 @@ services:
     ports:
       - "5678:5432"
   web:
-    image: doerfli/rss-mock-server:latest
+    image: doerfli/rss-mock-server:0.1.0
     ports:
       - "3000:3000"
     depends_on:
