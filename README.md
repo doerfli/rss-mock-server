@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/doerfli/rss-mock-server.svg?branch=master)](https://travis-ci.com/doerfli/rss-mock-server) [DockerHub](https://hub.docker.com/r/doerfli/rss-mock-server)
+
 # README
 
 Run `rails server` to start the application. There is also a docker image available, use the `docker-compose.yml` for easy setup. 
