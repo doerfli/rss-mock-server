@@ -7,6 +7,8 @@ services:
       - ./pgdata:/var/lib/postgresql/data
     ports:
       - "5678:5432"
+    environment:
+      - POSTGRES_PASSWORD=secret
   web:
     image: doerfli/rss-mock-server:0.2.0
     ports:
